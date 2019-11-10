@@ -13,7 +13,7 @@
 		<div class="white-container">
 			<div class="form-control-container"><input class="form-control" type="text" placeholder="Title" ng-model="product.title" /></div>
 			<div class="form-control-container"><input class="form-control" type="text" placeholder="Description" ng-model="product.descriptioin" /></div>
-			<div class="form-control-container"><input class="form-control" type="text" placeholder="Price" ng-model="product.price" /></div>
+			<div class="form-control-container"  ng-if="(product.variants || []).length === 0"><input class="form-control" type="text" placeholder="Price" ng-model="product.price" /></div>
 			<div class="form-control-container"><span class="form-control">Available</span><input class="form-control-checkbox" type="checkbox" ng-model="product.available" /></div>
 		</div>
 		<div class="white-container">
