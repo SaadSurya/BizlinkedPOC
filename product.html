@@ -1,0 +1,48 @@
+<div class="screen">
+	<div class="screen-header">
+		<div class="screen-header-text-center"><span>Product</span></div>
+		<span class="screen-header-text-left"><a href="#!/">cancel</a></span>
+		<span class="screen-header-text-right"><a ng-click="saveProduct();">save</a></span>
+	</div>
+	<div class="screen-body">
+		<div class="image-container">
+			<div class="image-thumbnail horizontal"><p style="text-align: center; font-size: 65px">+</p></div>
+			<div class="image-thumbnail horizontal"></div>
+			<div class="clear"></div>
+		</div>
+		<div class="white-container">
+			<div class="form-control-container"><input class="form-control" type="text" placeholder="Title" ng-model="product.title" /></div>
+			<div class="form-control-container"><input class="form-control" type="text" placeholder="Description" ng-model="product.descriptioin" /></div>
+			<div class="form-control-container"><input class="form-control" type="text" placeholder="Price" ng-model="product.price" /></div>
+			<div class="form-control-container"><span class="form-control">Available</span><input class="form-control-checkbox" type="checkbox" ng-model="product.available" /></div>
+		</div>
+		<div class="white-container">
+			<div class="white-container-header"><span class="white-container-heading">Attributes</span></div>
+			<div class="white-container-body">
+				<p ng-if="(product.attributes || []).length === 0">Add attributes if this product comes in multiple versions, like differenct sizes or colors, with same price.</p>
+				<div class="list">
+					<div class="list-item" ng-repeat="comb in product.attributeCombinations">
+						<div class="list-item-content">{{comb.combination.join(' / ')}}</div>
+						<div class="list-item-action"><span ng-click="removeAttributeCombination(comb)">-</span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer"><a ng-click="modifyAttributes(product.attributes || [])">{{(product.attributes || []).length > 0 ? 'Edit' : 'Add'}} Attributes</a></div>
+		</div>
+		<div class="white-container">
+			<div class="white-container-header"><span class="white-container-heading">Variants</span></div>
+			<div class="white-container-body">
+				<p ng-if="(product.variants || []).length === 0">Add variants if this product comes in multiple versions, like differenct sizes or colors, with different price.</p>
+				<div class="list">
+					<div class="list-item" ng-repeat="comb in product.variantCombinations">
+						<div class="list-item-content"><div>{{comb.combination.join(' / ')}}</div><div>Rs. {{comb.price}}</div></div>
+						<div class="list-item-action"><span>></span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer"><a ng-click="modifyVariants(product.variants || [])">{{(product.variants || []).length > 0 ? 'Edit' : 'Add'}} Variants</a></div>
+		</div>
+	</div>
+</div>

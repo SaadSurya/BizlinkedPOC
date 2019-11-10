@@ -1,0 +1,20 @@
+<div class="screen">
+	<div class="screen-header">
+		<div class="screen-header-text-center"><span>Variants</span></div>
+		<span class="screen-header-text-left"><a href="#!/product">cancel</a></span>
+		<span class="screen-header-text-right"><a ng-click="saveVariants();">save</a></span>
+	</div>
+	<div class="screen-body">
+		<div class="white-container">
+			<div class="white-container-body">
+				<div class="list">
+					<div class="list-item" ng-repeat="vari in variants" ng-click="modifyVariant(vari)">
+						<span class="small-text">{{vari.name}}</span>
+						<div>{{vari.values.join(', ')}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer"><a ng-click="newVariant()">Add Variant</a></div>
+		</div>
+	</div>
+</div>

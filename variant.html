@@ -1,0 +1,31 @@
+<div class="screen">
+	<div class="screen-header">
+		<div class="screen-header-text-center"><span>Variant</span></div>
+		<span class="screen-header-text-left"><a href="#!/variants">cancel</a></span>
+		<span class="screen-header-text-right"><a ng-click="saveVariant();">add</a></span>
+	</div>
+	<div class="screen-body">
+		<div class="white-container">
+			<div class="white-container-body">
+				<div class="form-control-container">
+					<input class="form-control" type="text" placeholder="Variant Name" ng-model="variant.name" />
+				</div>
+			</div>
+		</div>
+		<div class="white-container">
+			<div class="white-container-body">
+				<div class="form-control-container">
+					<input class="form-control-with-button" type="text" placeholder="Variant Value" ng-model="variantValue.value" /> <span ng-click="addVariantValue()" class="form-control-button">+<span>
+				</div>
+				<div class="list">
+					<div class="list-item" ng-repeat="value in variant.values">
+						<div class="list-item-content">{{value}}</div>
+						<div class="list-item-action"><span ng-click="removeVariantValue(value)">-</span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer" ng-if="variant.id"><a ng-click="deleteVariant()">Delete Variant</a></div>
+		</div>
+	</div>
+</div>

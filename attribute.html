@@ -1,0 +1,31 @@
+<div class="screen">
+	<div class="screen-header">
+		<div class="screen-header-text-center"><span>Attribute</span></div>
+		<span class="screen-header-text-left"><a href="#!/attributes">cancel</a></span>
+		<span class="screen-header-text-right"><a ng-click="saveAttribute();">add</a></span>
+	</div>
+	<div class="screen-body">
+		<div class="white-container">
+			<div class="white-container-body">
+				<div class="form-control-container">
+					<input class="form-control" type="text" placeholder="Attribute Name" ng-model="attribute.name" />
+				</div>
+			</div>
+		</div>
+		<div class="white-container">
+			<div class="white-container-body">
+				<div class="form-control-container">
+					<input class="form-control-with-button" type="text" placeholder="Attribute Value" ng-model="attributeValue.value" /> <span ng-click="addAttributeValue()" class="form-control-button">+<span>
+				</div>
+				<div class="list">
+					<div class="list-item" ng-repeat="value in attribute.values">
+						<div class="list-item-content">{{value}}</div>
+						<div class="list-item-action"><span ng-click="removeAttributeValue(value)">-</span></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer" ng-if="attribute.id"><a ng-click="deleteAttribute()">Delete Attribute</a></div>
+		</div>
+	</div>
+</div>
