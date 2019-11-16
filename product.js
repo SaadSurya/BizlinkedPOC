@@ -1,6 +1,7 @@
 app.controller('product', function ($scope, $location) {
   scope = $scope;
   $scope.product = {
+    available: true
     // attributes: [
     //   { "name": "Color", "values": ["Red", "Green", "Blue"], "id": 1 },
     //   { "name": "Size", "values": ["Small", "Medium", "Large"], "id": 2 }
