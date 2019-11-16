@@ -1,0 +1,27 @@
+<div class="screen">
+	<div class="screen-header">
+		<div class="screen-header-text-center"><span>Variant</span></div>
+		<span class="screen-header-text-left"><a href="#!/product">cancel</a></span>
+		<span class="screen-header-text-right"><a ng-click="saveVariantCombination();">save</a></span>
+	</div>
+	<div class="screen-body">
+		<div class="white-container">
+			<div class="form-control-container"><input class="form-control" type="text" placeholder="Title" ng-value="variantCombination.combination.join(' / ')" /></div>
+			<div class="form-control-container"><input class="form-control" type="text" placeholder="Price" ng-model="variantCombination.price" /></div>
+			<div class="form-control-container"><span class="form-control">Available</span><input class="form-control-checkbox" type="checkbox" ng-model="variantCombination.available" /></div>
+		</div>
+		<div class="white-container">
+			
+			<div class="white-container-body">
+				<div class="list">
+					<div class="list-item" ng-repeat="attrComb in variantCombination.attributeCombinations">
+						<div class="list-item-content">{{attrComb.combination.join(' / ')}}</div>
+						<div class="list-item-action"><input class="form-control-checkbox" type="checkbox" ng-model="attrComb.selected" /></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="white-container-footer"><a ng-click="removeVariantCombination()">Delete Variant Combination</a></div>
+		</div>
+	</div>
+</div>

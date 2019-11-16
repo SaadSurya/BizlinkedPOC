@@ -16,6 +16,7 @@ app.controller('product', function ($scope, $location) {
   $scope.variants = [];
   $scope.variant = {};
   $scope.variantValue = { value: "" };
+  $scope.variantCombination = {};
 
   $scope.saveProduct = function () {
     console.log($scope.product);
@@ -79,6 +80,11 @@ app.controller('product', function ($scope, $location) {
       cartesian = getCartesian(cartesian, attr.values);
     });
     $scope.product.attributeCombinations = cartesian.map((c, i)=> {return {id: i+1, combination: c}});
+    if($scope.product.variantCombinations){
+      $scope.product.variantCombinations.forEach(comb => {
+        comb.attributeCombinations = angular.copy($scope.product.attributeCombinations).map(ac => {ac.selected = true; return ac;});
+      });
+    }
     $location.path('product');
 
     function getCartesian(combinations, values) {
@@ -166,7 +172,15 @@ app.controller('product', function ($scope, $location) {
     $scope.product.variants.forEach(vari => {
       cartesian = getCartesian(cartesian, vari.values);
     });
-    $scope.product.variantCombinations = cartesian.map((c, i)=> {return {id: i+1, combination: c, price: $scope.product.price}});
+    $scope.product.variantCombinations = cartesian.map((c, i)=> {
+      return {
+        id: i+1, 
+        combination: c, 
+        price: $scope.product.price,
+        available: $scope.product.available,
+        attributeCombinations: $scope.product.attributeCombinations ? angular.copy($scope.product.attributeCombinations).map(ac => {ac.selected = true; return ac;}) : []
+      };
+    });
     $location.path('product');
 
     function getCartesian(combinations, values) {
@@ -190,6 +204,21 @@ app.controller('product', function ($scope, $location) {
   $scope.modifyVariants = function (varis) {
     $scope.variants = angular.copy(varis);
     $location.path('variants');
+  }
+  $scope.removeVariantCombination = function() {
+    let variantCombination = $scope.product.variantCombinations.filter(vc => vc.id === $scope.variantCombination.id)[0];
+    $scope.product.variantCombinations.splice(variantCombination, 1);
+    $scope.variantCombination = {};
+    $location.path('product');
+  }
+  $scope.modifyVariantCombination = function (comb) {
+    $scope.variantCombination = angular.copy(comb);
+    $location.path('variant-combination');
+  };
+  $scope.saveVariantCombination = function() {
+    let variantCombination = $scope.product.variantCombinations.filter(variComb => variComb.id === $scope.variantCombination.id)[0];
+    angular.copy($scope.variantCombination, variantCombination);
+    $location.path('product');
   }
   ///////////////////////////////////////////////////
 });

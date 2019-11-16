@@ -16,7 +16,10 @@ app.config(function($routeProvider) {
   .when("/variants", {
     templateUrl : "variants.html"
   })
-    .when("/variant", {
+  .when("/variant", {
     templateUrl : "variant.html"
+  })
+  .when("/variant-combination", {
+    templateUrl : "variant-combination.html"
   })
 });

@@ -35,7 +35,7 @@
 			<div class="white-container-body">
 				<p ng-if="(product.variants || []).length === 0">Add variants if this product comes in multiple versions, like differenct sizes or colors, with different price.</p>
 				<div class="list">
-					<div class="list-item" ng-repeat="comb in product.variantCombinations">
+					<div class="list-item" ng-repeat="comb in product.variantCombinations" ng-click="modifyVariantCombination(comb)">
 						<div class="list-item-content"><div>{{comb.combination.join(' / ')}}</div><div>Rs. {{comb.price}}</div></div>
 						<div class="list-item-action"><span>></span></div>
 						<div class="clear"></div>
